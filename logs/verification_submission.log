@@ -1,0 +1,42 @@
+RESS V15 clean-environment verification
+Date: 2026-07-17 (Asia/Shanghai)
+
+Environment
+Python 3.12.10
+numpy 1.26.4
+scipy 1.13.1
+pandas 2.3.2
+matplotlib 3.10.5
+
+COMMAND: python -m compileall -q src tests
+RESULT: PASS
+
+COMMAND: import task1_q1_milp, fig10_morris_screening, run_prcc, run_all
+RESULT: PASS
+
+COMMAND: python -m unittest discover -s tests -v
+RESULT: PASS (8 tests)
+
+COMMAND: python src/run_prcc.py
+RESULT: PASS
+  samples=256, included=251, excluded=5, seed=2026, T=137
+  c_R_base=+0.937492, gamma=-0.903066, t_mid=+0.822536
+  regenerated sample CSV Git blob matches the deposited sample CSV exactly
+
+COMMAND: python src/run_prcc.py --horizon 156
+RESULT: PASS
+  samples=256, included=256, excluded=0, seed=2026, T=156
+  c_R_base=+0.978965, gamma=-0.968614, t_mid=+0.831360
+  T=137 outputs remained separate and unchanged in name
+
+COMMAND: python src/run_all.py
+RESULT: PASS (48/48 checks)
+  deterministic MILP: 9/9
+  robust MILP, feasibility scan, and Figure 8: 11/11
+  Figure 9: 1/1
+  Figure 10 Morris: 9/9
+  Figure 11 PRCC at T=137 and T=156: 18/18
+  final line: ALL V15 CHECKS PASSED
+
+No personal paths, access tokens, or machine-specific output locations are
+included in this transcript.

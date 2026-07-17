@@ -1,0 +1,19 @@
+LHS-MILP PRCC sensitivity analysis
+Python: 3.12.10
+Versions: numpy=1.26.4 scipy=1.13.1 pandas=2.3.2 matplotlib=3.10.5
+Design: samples=256 seed=2026 parameters=7 range=+/-20% fixed_T=137
+Samples: included=251 excluded=5
+Results:
+  c_R_base   PRCC=+0.937492 p=2.19993e-113
+  gamma      PRCC=-0.903066 p=3.65785e-91
+  t_mid      PRCC=+0.822536 p=1.70502e-61
+  P_R        PRCC=-0.552243 p=5.83275e-21
+  N_max      PRCC=-0.549936 p=9.12677e-21
+  k_growth   PRCC=-0.090464 p=0.158055
+  C_fixed    PRCC=+0.078937 p=0.21826
+Outputs:
+  data\prcc_lhs_milp_samples.csv
+  data\prcc_results.csv
+  figures\Figure11_PRCC_corrected.png
+  logs\prcc_run_log.txt
+Run complete

@@ -346,7 +346,7 @@ def fig_water_demand():
 
 
 def fig_strategy_comparison(df_single: pd.DataFrame, df_per: pd.DataFrame):
-    """Figure 11: S1 vs S2 cost comparison (paper Figure 11)."""
+    """Water-extension diagnostic: S1 versus S2 cost comparison."""
     fig, axes = plt.subplots(1, 2, figsize=(12, 5))
 
     for ax, df, title, baseline_cost in zip(
@@ -384,7 +384,7 @@ def fig_strategy_comparison(df_single: pd.DataFrame, df_per: pd.DataFrame):
 
 
 def fig_cumulative_delivery(df_single: pd.DataFrame):
-    """Figure 11 analogue: Cumulative water delivery timeline."""
+    """Water-extension diagnostic: cumulative delivery timeline."""
     wp = WaterParams
     T_inh = 137
     T_end = T_inh + 5
