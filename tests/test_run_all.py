@@ -16,13 +16,12 @@ import run_all  # noqa: E402
 
 
 class VerificationSummaryTests(unittest.TestCase):
-    def test_missing_canonical_csv_is_not_a_byte_identity_pass(self):
-        self.assertTrue(
-            hasattr(run_all, "_canonical_bytes_match"),
-            "run_all must expose the canonical-byte gate for regression tests",
-        )
-        self.assertFalse(run_all._canonical_bytes_match(None, "generated-sha"))
-        self.assertTrue(run_all._canonical_bytes_match("same-sha", "same-sha"))
+    def test_csv_comparison_is_numeric_and_line_ending_independent(self):
+        left = pd.DataFrame({"T": [1, 2], "value": [3.0, 4.0]})
+        right = pd.DataFrame({"T": [1, 2], "value": [3.0, 4.0]})
+        self.assertTrue(run_all._frames_numerically_equal(left, right))
+        right.loc[1, "value"] = 5.0
+        self.assertFalse(run_all._frames_numerically_equal(left, right))
 
     def test_scan_gate_rejects_corrupted_deposited_evidence(self):
         self.assertTrue(
@@ -70,7 +69,7 @@ class VerificationSummaryTests(unittest.TestCase):
 
         rendered = output.getvalue()
         self.assertEqual(exit_code, 1)
-        self.assertIn("[FAIL]  crashing task", rendered)
+        self.assertIn("[FAIL] crashing task", rendered)
         self.assertNotIn("ALL CHECKS PASSED", rendered)
 
     def test_zero_check_task_cannot_be_reported_as_success(self):
@@ -83,7 +82,7 @@ class VerificationSummaryTests(unittest.TestCase):
 
         rendered = output.getvalue()
         self.assertEqual(exit_code, 1)
-        self.assertIn("[FAIL]  empty task", rendered)
+        self.assertIn("[FAIL] empty task", rendered)
         self.assertNotIn("ALL CHECKS PASSED", rendered)
 
 

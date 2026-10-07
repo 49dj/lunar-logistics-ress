@@ -2,3 +2,11 @@ __pycache__/
 *.pyc
 .venv/
 .DS_Store
+.env
+.env.*
+.pytest_cache/
+.ipynb_checkpoints/
+venv/
+*.pkl
+*.joblib
+data/private/
