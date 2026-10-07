@@ -1,0 +1,8 @@
+cff-version: 1.2.0
+message: "Cite the public V15 code package with the exact branch and commit; no journal publication DOI is asserted."
+title: "Reliability-informed robust optimisation of Earth-Moon infrastructure logistics under launch and space-elevator disruptions: V15 computational package"
+type: software
+authors:
+  - name: "Earth–Moon logistics research contributors"
+repository-code: "https://github.com/49dj/lunar-logistics-ress"
+url: "https://github.com/49dj/lunar-logistics-ress/tree/portfolio-cleanup"
